@@ -3,9 +3,8 @@ import "./ExpenseItem.css";
 import Card from "../UI/Card.js"
 
 function ExpenseItem(props) {
-  const title = props.title;
   const price = props.price;
-
+  const title = props.title;
   // Each return should has 1 root element
   return (
     <Card className="expense-item">
@@ -14,6 +13,7 @@ function ExpenseItem(props) {
         <h2>{title}</h2>
         <div className="expense-item__price">{price}$</div>
       </div>
+
     </Card>
   );
 }
