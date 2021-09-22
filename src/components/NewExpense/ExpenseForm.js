@@ -5,12 +5,12 @@ function ExpenseForm(props) {
   // Approach 1: Multiple state (Better)
   // Datatype returned by event is string. So, we used single quotation - Initial State.
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   // Approach 2: One state
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: "",
-  //   enteredAmount: "",
+  //   enteredPrice: "",
   //   enteredDate: "",
   // });
 
@@ -30,18 +30,18 @@ function ExpenseForm(props) {
     //   enteredTitle: event.target.value}
     // });
   }
-  function amountChangedHandler(event) {
-    setEnteredAmount(event.target.value);
+  function priceChangedHandler(event) {
+    setEnteredPrice(event.target.value);
     console.log(event.target.value);
     // setUserInput({
     //   ...userInput,
     //   // Overwrite entered title
-    //   enteredAmount: event.target.value,
+    //   enteredPrice: event.target.value,
     // });
     // setUserInput( (prevState) => {
     //   return {
     //   ...prevState,
-    //   enteredAmount: event.target.value}
+    //   enteredPrice: event.target.value}
     // });
   }
   function dateChangedHandler(event) {
@@ -64,13 +64,13 @@ function ExpenseForm(props) {
     // Collecting Data
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      price: +enteredPrice,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
     // Reset
     setEnteredDate("");
-    setEnteredAmount("");
+    setEnteredPrice("");
     setEnteredTitle("");
   };
   return (
@@ -87,13 +87,13 @@ function ExpenseForm(props) {
           />
         </div>
         <div className="new-expense__control">
-          <label>Amount</label>
+          <label>Price</label>
           <input
             type="number"
             min="0.01"
             step="0.01"
-            value={enteredAmount}
-            onChange={amountChangedHandler}
+            value={enteredPrice}
+            onChange={priceChangedHandler}
           />
         </div>
         <div className="new-expense__control">
@@ -108,6 +108,9 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Element</button>
       </div>
     </form>

@@ -7,6 +7,7 @@ function ExpenseItem(props) {
   const title = props.title;
   // Each return should has 1 root element
   return (
+    <li>
     <Card className="expense-item">
       <ExpenseDate date={props.date}/>
       <div className="expense-item__description">
@@ -15,6 +16,7 @@ function ExpenseItem(props) {
       </div>
 
     </Card>
+    </li>
   );
 }
 // To use it outside this file
